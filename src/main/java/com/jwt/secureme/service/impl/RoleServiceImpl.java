@@ -19,9 +19,7 @@ public class RoleServiceImpl implements RoleService {
         if (roleRepo.findAppRoleByName(roleName).isPresent())
             throw new SystemException(String.format("Role %s already exist", roleName));
 
-        var role = new AppRole();
-        role.setName(roleName);
-        return roleRepo.save(role);
+        return roleRepo.save(AppRole.builder().name(roleName).build());
     }
 
     @Override

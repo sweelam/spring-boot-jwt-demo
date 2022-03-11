@@ -11,11 +11,11 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+@Testcontainers
+@ActiveProfiles("test")
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @WithMockUser(username = "spring", password = "secret")
-@Testcontainers
-@ActiveProfiles("test")
 public abstract class ApplicationTestSupport {
 
     @Autowired
@@ -29,3 +29,4 @@ public abstract class ApplicationTestSupport {
                     .withPassword("postgres");
 
 }
+
