@@ -1,11 +1,12 @@
 package com.jwt.secureme.service;
 
+import com.jwt.secureme.dto.UserRequest;
 import com.jwt.secureme.model.AppUser;
 
 import java.util.List;
 
 public interface UserService {
-    AppUser saveNewUser(AppUser user);
+    AppUser saveNewUser(UserRequest userRequest);
 
     AppUser getUser(String username);
 

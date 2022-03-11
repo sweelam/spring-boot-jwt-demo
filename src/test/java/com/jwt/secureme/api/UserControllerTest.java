@@ -2,7 +2,7 @@ package com.jwt.secureme.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwt.secureme.ApplicationTestSupport;
-import com.jwt.secureme.model.AppUser;
+import com.jwt.secureme.dto.UserRequest;
 import com.jwt.secureme.service.RoleService;
 import com.jwt.secureme.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -44,7 +46,7 @@ class UserControllerTest extends ApplicationTestSupport {
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(
-                                objectMapper.writeValueAsString(AppUser.builder()
+                                objectMapper.writeValueAsString(UserRequest.builder()
                                         .name("Waheed Hamed")
                                         .password("123")
                                         .username("wlaHamed")
@@ -52,6 +54,24 @@ class UserControllerTest extends ApplicationTestSupport {
                                 )
                         )
         ).andExpect(status().isCreated());
+    }
+
+    @Test
+    void addUserShouldProvideAllRequiredFields() throws Exception {
+        mockMvc.perform(
+                post(RESOURCE_CONTEXT.concat("/"))
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(
+                                objectMapper.writeValueAsString(UserRequest.builder()
+                                        .name("Waheed Hamed")
+                                        .username("wlaHamed")
+                                        .build()
+                                )
+                        )
+        ).andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("password must not be null"));
     }
 
 }

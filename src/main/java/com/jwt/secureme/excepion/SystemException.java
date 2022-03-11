@@ -10,14 +10,8 @@ import java.time.Instant;
 public class SystemException extends RuntimeException {
     private String message;
     private Instant errorTime = Instant.now();
-    private Throwable cause;
 
     public SystemException(String message) {
         this.message = message;
-    }
-
-    public SystemException(String message, Throwable cause) {
-        this.message = message;
-        this.cause = cause;
     }
 }
