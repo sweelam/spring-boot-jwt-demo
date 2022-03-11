@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:tc:postgresql:13.2:////jwt-db
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true

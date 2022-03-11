@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: jwt-demo
+  datasource:
+      username: jwtuser
+      password: letmein
+      url: jdbc:postgresql://localhost:5432/jwt-db
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+  security:
+    user:
+      password: 123
+
+security:
+  basic:
+    enabled: false
