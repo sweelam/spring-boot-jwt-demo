@@ -1,5 +1,7 @@
 server:
   port: 8082
+  error:
+    include-stacktrace: never
 
 spring:
   application:
@@ -18,7 +20,3 @@ spring:
   security:
     user:
       password: 123
-
-security:
-  basic:
-    enabled: false

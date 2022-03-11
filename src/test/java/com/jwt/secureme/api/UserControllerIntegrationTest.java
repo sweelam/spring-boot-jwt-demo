@@ -2,7 +2,7 @@ package com.jwt.secureme.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwt.secureme.ApplicationTestSupport;
-import com.jwt.secureme.model.AppUser;
+import com.jwt.secureme.dto.UserRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,9 +26,9 @@ public class UserControllerIntegrationTest extends ApplicationTestSupport {
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(
-                                objectMapper.writeValueAsString(AppUser.builder()
+                                objectMapper.writeValueAsString(UserRequest.builder()
                                         .name("Waheed Hamed")
-                                        .password("123")
+                                        .password("123assaas11212")
                                         .username("wlaHamed")
                                         .build()
                                 )
@@ -40,9 +40,9 @@ public class UserControllerIntegrationTest extends ApplicationTestSupport {
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(
-                                objectMapper.writeValueAsString(AppUser.builder()
+                                objectMapper.writeValueAsString(UserRequest.builder()
                                         .name("Waheed Hamed")
-                                        .password("123")
+                                        .password("123assaas11212")
                                         .username("wlaHamed")
                                         .build()
                                 )

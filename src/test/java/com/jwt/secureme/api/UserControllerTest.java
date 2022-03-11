@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -31,6 +33,12 @@ class UserControllerTest extends ApplicationTestSupport {
     @MockBean
     RoleService roleService;
 
+    @MockBean
+    UserDetailsService userDetailsService;
+
+    @MockBean
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Test
     void getUsers() throws Exception {
         mockMvc.perform(
@@ -48,7 +56,7 @@ class UserControllerTest extends ApplicationTestSupport {
                         .content(
                                 objectMapper.writeValueAsString(UserRequest.builder()
                                         .name("Waheed Hamed")
-                                        .password("123")
+                                        .password("123assaas11212")
                                         .username("wlaHamed")
                                         .build()
                                 )
