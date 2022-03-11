@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  postgresql:
+    volumes:
+      - ./data/postgres/pgdata:/var/lib/postgresql/data:z
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    ports:
+      - "${POSTGRES_PORT_EXPOSED}:${POSTGRES_PORT}"
+    image: postgres:13-alpine
+    restart: always
