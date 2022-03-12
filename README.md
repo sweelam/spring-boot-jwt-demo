@@ -13,6 +13,7 @@ The system is nothing but JWT handling using java 16 and spring boot
 * Integration Tests with Test Containers
 
 ### How to start up the application
+* You need to have docker installed, or if you have postgresql installed locally, you can skip second step
 * Run docker-compose file under docker directory using, it will create local instance of postgre DB
 ```docker-compose up -d```
 * Connect to DB and create new database using ``CREATE DATABASE "jwt-db"``
