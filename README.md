@@ -12,12 +12,61 @@ The system is nothing but JWT handling using java 16 and spring boot
 * Junit 5 and Mockito
 * Integration Tests with Test Containers
 
-### How to start up the application
+### How to start up the application?
 * You need to have docker installed, or if you have postgresql installed locally, you can skip second step
 * Run docker-compose file under docker directory using, it will create local instance of postgre DB
 ```docker-compose up -d```
 * Connect to DB and create new database using ``CREATE DATABASE "jwt-db"``
 * Create user using ``create user jwtuser with password 'letmein'`` if you already have DB installed, or change username and password in application.yml file to match your existing database user.
+
+
+### Application Testing
+The project has admin setup under main class with user "msweelam", you can use it with password "sweelam123" to tests APIs 
+Some curl command to try
+* Login API
+````
+curl --location --request POST 'localhost:8082/api/login' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'username=msweelam' \
+  --data-urlencode 'password=sweelam123'
+````
+* Add user you need to replace the **access_token** with the provided header token from login API 
+````
+curl --location --request POST 'localhost:8082/api/user' \
+--header 'Authorization: Bearer <access_token>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Alaa Mahmoud",
+    "username": "alaMahmoud",
+    "password": "all123",
+    "roles": [
+        {
+            "name": "USER"
+        }
+    ]
+}'
+````
+* Refresh token API using the **refresh_token** provided from login if **access_token** expired
+````
+curl --location --request GET 'localhost:8082/api/token' \
+--header 'Authorization: Bearer <refresh_token>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Alaa Mahmoud",
+    "username": "alaMahmoud",
+    "password": "all123",
+    "roles": [
+        {
+            "name": "USER"
+        }
+    ]
+}'
+````
+* Retrieve al users 
+````
+curl --location --request GET 'localhost:8082/api/user' \
+--header 'Authorization: Bearer <access_token>'
+````
 
 ### Guides
 

@@ -25,7 +25,7 @@ public class TokenController {
     private String SECRET_KEY;
 
     @GetMapping
-    public ResponseEntity<?> refreshToken(@RequestHeader("refresh_token") String token) {
+    public ResponseEntity<?> refreshToken(@RequestHeader("AUTHORIZATION") String token) {
         var decodedJwt = decodeToken(token, SECRET_KEY);
         var user = userService.principleUserConversion(userService.getUser(decodedJwt.getSubject()));
         var newToken =
