@@ -13,8 +13,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import static com.jwt.secureme.config.ApiConfigs.SYS_HEADER;
+
 @RestController
-@RequestMapping(value = "/user", headers = "accept=application/json; version= 1.0")
+@RequestMapping(value = "/user", headers = SYS_HEADER)
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -24,11 +26,20 @@ public class UserController {
         return ResponseEntity.created(
                 ServletUriComponentsBuilder.fromCurrentContextPath()
                         .build(new URI("api/user"))
-        ).body(userService.saveNewUser(user));
+        ).body(userService.addNewUser(user));
     }
 
     @GetMapping
     public ResponseEntity<List<AppUser>> getUsers() {
         return ResponseEntity.ok().body(userService.getUsers());
+    }
+
+    @PostMapping("/role/{username}/{roleName}")
+    public ResponseEntity<String> addUserRole(@PathVariable String username, @PathVariable String roleName) throws URISyntaxException {
+        userService.addUserRole(username, roleName);
+        return ResponseEntity.created(
+                ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .build(new URI("api/user/role"))
+        ).body("Role is added to user");
     }
 }

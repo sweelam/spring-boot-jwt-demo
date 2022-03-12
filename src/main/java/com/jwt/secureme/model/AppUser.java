@@ -20,5 +20,6 @@ public class AppUser {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<AppRole> roles = new ArrayList();
+    @Builder.Default
+    private Collection<AppRole> roles = new ArrayList<>();
 }

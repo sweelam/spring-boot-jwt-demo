@@ -17,6 +17,7 @@ The system is nothing but JWT handling using java 16 and spring boot
 * Run docker-compose file under docker directory using, it will create local instance of postgre DB
 ```docker-compose up -d```
 * Connect to DB and create new database using ``CREATE DATABASE "jwt-db"``
+* Create user using ``create user jwtuser with password 'letmein'`` if you already have DB installed, or change username and password in application.yml file to match your existing database user.
 
 ### Guides
 
