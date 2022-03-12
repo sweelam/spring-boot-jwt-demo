@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/user", headers = "accept=application/json; version= 1.0")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
