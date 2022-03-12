@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(controllers = UserController.class)
 class UserControllerTest extends ApplicationTestSupport {
-    private final String RESOURCE_CONTEXT = "/api/user";
+    private final String RESOURCE_CONTEXT = "/user";
 
     @Autowired
     ObjectMapper objectMapper;

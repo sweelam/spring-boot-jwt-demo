@@ -2,6 +2,8 @@ server:
   port: 8082
   error:
     include-stacktrace: never
+  servlet:
+    context-path: /api
 
 spring:
   application:
@@ -20,3 +22,18 @@ spring:
   security:
     user:
       password: 123
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      enabled: true
+    info:
+      enabled: true
+
+token:
+  secret:
+    key: secret-key@123

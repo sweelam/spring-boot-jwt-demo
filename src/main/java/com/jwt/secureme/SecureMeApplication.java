@@ -31,10 +31,17 @@ public class SecureMeApplication implements ApplicationRunner {
                 roleService.addRole(SystemRoles.USER.name());
                 userService.addUserRole("mAli", SystemRoles.USER.name());
             }
+
+        } catch (Exception e) {
+            log.warn("Adding roles failed {}", e.getMessage());
+        }
+
+        try {
             if (!roleService.getRole(SystemRoles.ADMIN.name()).isPresent()) {
                 roleService.addRole(SystemRoles.ADMIN.name());
                 userService.addUserRole("msweelam", SystemRoles.ADMIN.name());
             }
+
         } catch (Exception e) {
             log.warn("Adding roles failed {}", e.getMessage());
         }

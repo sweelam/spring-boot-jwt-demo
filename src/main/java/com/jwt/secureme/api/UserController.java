@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping(value = "/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;

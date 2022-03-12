@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class UserControllerIntegrationTest extends ApplicationTestSupport {
-    private final String RESOURCE_CONTEXT = "/api/user";
+    private final String RESOURCE_CONTEXT = "/user";
 
     @Autowired
     ObjectMapper objectMapper;
