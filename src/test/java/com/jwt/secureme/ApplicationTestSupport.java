@@ -17,7 +17,6 @@ import java.nio.charset.StandardCharsets;
 @Testcontainers
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-@ExtendWith(SpringExtension.class)
 @WithMockUser(username = "spring", password = "secret")
 public abstract class ApplicationTestSupport {
 

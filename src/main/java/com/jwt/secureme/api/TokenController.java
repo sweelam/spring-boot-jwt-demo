@@ -22,14 +22,14 @@ public class TokenController {
     private final UserService userService;
 
     @Value("${token.secret.key}")
-    private String SECRET_KEY;
+    private String secretKey;
 
     @GetMapping
-    public ResponseEntity<?> refreshToken(@RequestHeader("AUTHORIZATION") String token) {
-        var decodedJwt = decodeToken(token, SECRET_KEY);
+    public ResponseEntity<String> refreshToken(@RequestHeader("AUTHORIZATION") String token) {
+        var decodedJwt = decodeToken(token, secretKey);
         var user = userService.principleUserConversion(userService.getUser(decodedJwt.getSubject()));
         var newToken =
-                generateToken("jwt-demo-app", user, Algorithm.HMAC256(SECRET_KEY.getBytes()), 10);
+                generateToken("jwt-demo-app", user, Algorithm.HMAC256(secretKey.getBytes()), 10);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("access_token", newToken);

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class SystemException extends RuntimeException {
-    private String message;
+    private final String message;
 
     public SystemException(String message) {
         this.message = message;

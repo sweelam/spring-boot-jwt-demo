@@ -37,3 +37,9 @@ management:
 token:
   secret:
     key: secret-key@123
+
+admin:
+  details:
+    name: Mohamed Sweelam
+    username: msweelam
+    password: sweelam123
