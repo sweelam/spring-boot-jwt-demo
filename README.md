@@ -11,6 +11,7 @@ The system is nothing but JWT handling using java 16 and spring boot
 * Exception Handling using AOP
 * Junit 5 and Mockito
 * Integration Tests with Test Containers
+* Jacoco test coverage
 
 ### How to start up the application?
 * You need to have docker installed, or if you have postgresql installed locally, you can skip second step
