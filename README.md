@@ -21,7 +21,8 @@ The system is nothing but JWT handling using java 16 and spring boot
 
 
 ### Application Testing
-The project has admin setup under main class with user "msweelam", you can use it with password "sweelam123" to test APIs.
+The project has admin setup under main class with user defined within application.yml (admin.details), you can use the default "msweelam" with password "sweelam123" to test APIs.
+Or you can change it and use a user details of your choice.
 
 Some curl command to try
 * Login API
