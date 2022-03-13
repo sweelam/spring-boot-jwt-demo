@@ -13,7 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import static com.jwt.secureme.config.ApiConfigs.SYS_HEADER;
+import static com.jwt.secureme.config.ApiConfig.SYS_HEADER;
 
 @RestController
 @RequestMapping(value = "/user", headers = SYS_HEADER)

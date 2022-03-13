@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.jwt.secureme.config.ApiConfigs.SYS_HEADER;
+import static com.jwt.secureme.config.ApiConfig.SYS_HEADER;
 import static com.jwt.secureme.util.JwtUtils.decodeToken;
 import static com.jwt.secureme.util.JwtUtils.generateToken;
 
