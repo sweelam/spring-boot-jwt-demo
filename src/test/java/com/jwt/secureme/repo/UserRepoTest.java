@@ -2,7 +2,6 @@ package com.jwt.secureme.repo;
 
 import com.jwt.secureme.ApplicationJpaSupport;
 import com.jwt.secureme.model.AppUser;
-import com.jwt.secureme.service.RoleService;
 import com.jwt.secureme.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ class UserRepoTest extends ApplicationJpaSupport {
 
     @MockBean
     UserService userService;
-    @MockBean
-    RoleService roleService;
 
     @Test
     void findByUsernameShouldReturn() {

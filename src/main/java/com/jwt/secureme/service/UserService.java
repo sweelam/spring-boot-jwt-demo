@@ -18,4 +18,6 @@ public interface UserService {
     void addUserRole(String username, String roleName);
 
     User principleUserConversion(AppUser appUser);
+
+    void setupAdmin();
 }

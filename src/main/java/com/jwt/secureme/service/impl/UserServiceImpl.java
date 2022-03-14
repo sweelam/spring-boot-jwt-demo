@@ -1,5 +1,7 @@
 package com.jwt.secureme.service.impl;
 
+import com.jwt.secureme.dto.AdminDetails;
+import com.jwt.secureme.dto.SystemRoles;
 import com.jwt.secureme.dto.UserRequest;
 import com.jwt.secureme.excepion.SystemException;
 import com.jwt.secureme.model.AppUser;
@@ -29,6 +31,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepo userRepo;
     private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
+    private final AdminDetails adminDetails;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -37,10 +40,43 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User %s not found in the database", username)));
     }
 
+    @Override
     public User principleUserConversion(AppUser appUser) {
         List<SimpleGrantedAuthority> grantAuths = new ArrayList<>();
         appUser.getRoles().forEach(t -> grantAuths.add(new SimpleGrantedAuthority(t.getName())));
         return new User(appUser.getUsername(), appUser.getPassword(), grantAuths);
+    }
+
+    @Override
+    public void setupAdmin() {
+        try {
+
+            var user = addNewUser(
+                    UserRequest.builder()
+                            .name(adminDetails.name())
+                            .username(adminDetails.username())
+                            .password(adminDetails.password()).build()
+            );
+
+            if (CollectionUtils.isEmpty(user.getRoles())) {
+                addRole();
+            }
+        } catch (Exception e) {
+            log.warn("Adding user failed {}", e.getMessage());
+        }
+    }
+
+    private void addRole() {
+        try {
+
+            if (!roleService.getRole(SystemRoles.ADMIN.name()).isPresent()) {
+                roleService.addRole(SystemRoles.ADMIN.name());
+            }
+
+            addUserRole("msweelam", SystemRoles.ADMIN.name());
+        } catch (Exception e) {
+            log.warn("Adding roles failed {}", e.getMessage());
+        }
     }
 
     @Override

@@ -42,4 +42,10 @@ public class UserController {
                         .build(new URI("api/user/role"))
         ).body("Role is added to user");
     }
+
+    @DeleteMapping("/{username}")
+    public ResponseEntity<String> removeUser(@PathVariable String username) {
+        userService.removeUser(username);
+        return ResponseEntity.ok(String.format("User %s is removed", username));
+    }
 }

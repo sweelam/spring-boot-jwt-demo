@@ -19,12 +19,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate.format_sql: true
-  security:
-    user:
-      password: 123
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
 
 management:
   endpoint:
