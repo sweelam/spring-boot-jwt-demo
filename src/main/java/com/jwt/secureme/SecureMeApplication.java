@@ -3,6 +3,8 @@ package com.jwt.secureme;
 import com.jwt.secureme.dto.SystemRoles;
 import com.jwt.secureme.service.RoleService;
 import com.jwt.secureme.service.UserService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -11,6 +13,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(
+        description = "jwt-auth demo using springboot",
+        version = "1.0",
+        title = "secure-me"
+))
 @Slf4j
 public class SecureMeApplication implements ApplicationRunner {
 
