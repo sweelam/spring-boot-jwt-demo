@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserControllerIntegrationTest extends ApplicationTestSupport {
+class UserControllerIntegrationTest extends ApplicationTestSupport {
     private final String RESOURCE_CONTEXT = "/user";
 
     @Autowired
