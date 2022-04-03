@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.util.Optional;
+
 
 @ControllerAdvice
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
@@ -23,7 +25,11 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(RestExceptionResponse.builder()
-                        .message(ex.getFieldError().getField().concat(" " + ex.getFieldError().getDefaultMessage()))
+                        .message(
+                                Optional.ofNullable(ex.getFieldError())
+                                        .map(error -> error.getField().concat(" " + ex.getFieldError().getDefaultMessage()))
+                                        .orElse("")
+                        )
                         .build());
     }
 }

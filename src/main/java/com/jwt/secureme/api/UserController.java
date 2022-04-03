@@ -1,6 +1,5 @@
 package com.jwt.secureme.api;
 
-import com.jwt.secureme.config.SecurityConfig;
 import com.jwt.secureme.dto.UserRequest;
 import com.jwt.secureme.model.AppUser;
 import com.jwt.secureme.service.UserService;

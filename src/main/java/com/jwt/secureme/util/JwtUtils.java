@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Date;
-import java.util.stream.Collectors;
 
 public class JwtUtils {
     private JwtUtils() {}
@@ -33,7 +32,7 @@ public class JwtUtils {
                 .withExpiresAt(new Date(System.currentTimeMillis() + expireAfterMins * 60 * 1000))
                 .withIssuer(issuer)
                 .withClaim("roles", user.getAuthorities().stream()
-                        .map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                        .map(GrantedAuthority::getAuthority).toList())
                 .sign(algorithm);
     }
 }
