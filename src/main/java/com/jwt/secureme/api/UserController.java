@@ -3,6 +3,7 @@ package com.jwt.secureme.api;
 import com.jwt.secureme.dto.UserRequest;
 import com.jwt.secureme.model.AppUser;
 import com.jwt.secureme.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,11 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import static com.jwt.secureme.config.ApiConfig.SYS_HEADER;
+import static com.jwt.secureme.config.SecurityConfig.APPLICATION_NAME;
 
 @RestController
 @RequestMapping(value = "/user", headers = SYS_HEADER)
+@SecurityRequirement(name = APPLICATION_NAME)
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;

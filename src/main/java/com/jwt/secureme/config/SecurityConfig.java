@@ -1,8 +1,8 @@
 package com.jwt.secureme.config;
 
 import com.jwt.secureme.dto.SystemRoles;
-import com.jwt.secureme.filter.SystemAuthorizationFilter;
 import com.jwt.secureme.filter.SystemAuthenticationFilter;
+import com.jwt.secureme.filter.SystemAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    public static final String APPLICATION_NAME = "jwt-demo";
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
