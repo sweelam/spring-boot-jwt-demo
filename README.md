@@ -31,7 +31,7 @@ Some curl command to try
 curl --location --request POST 'localhost:8082/api/login' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data-urlencode 'username=msweelam' \
-  --data-urlencode 'password=sweelam123'
+  --data-urlencode 'password=sweelam123' -i
 ````
 
 * Having the token you can use it via the following curl commands or through swagger
